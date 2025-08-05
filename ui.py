@@ -5,6 +5,8 @@ from main import (
     prompt_oss, prompt_kimi, prompt_zai,
     prompt_azure_openai, prompt_cohere
 )
+from extras import prompt_azure_extra
+
 
 # Simple model list
 MODELS = {
@@ -19,6 +21,12 @@ MODELS = {
     "command-r7b": lambda p: prompt_cohere(p, "command-r7b"),
     "command-r+": lambda p: prompt_cohere(p, "command-r+"),
     "command-a": lambda p: prompt_cohere(p, "command-a"),
+    "jais-30b": lambda p: prompt_azure_extra(p, "jais-30b"),
+    "phi-4": lambda p: prompt_azure_extra(p, "phi-4"),
+    "llama-4": lambda p: prompt_azure_extra(p, "llama-4"),
+    "grok-3": lambda p: prompt_azure_extra(p, "grok-3"),
+    "deepseek-r1": lambda p: prompt_azure_extra(p, "deepseek-r1"),
+    "mai-ds-r1": lambda p: prompt_azure_extra(p, "mai-ds-r1"),
 }
 
 # Page setup
