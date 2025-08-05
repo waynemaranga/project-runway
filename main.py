@@ -2,16 +2,15 @@ from openai import OpenAI, AzureOpenAI
 import cohere
 import dotenv
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Any
+import streamlit as st
 
 from openai.types.chat.chat_completion import ChatCompletion
 
-# HUGGINGFACE_TOKEN: Optional[str] = dotenv.get_key(str(Path(__file__).resolve().parent / ".env"), "HUGGINGFACE_TOKEN")
-ENV_PATH = str(Path(__file__).resolve().parent / ".env")
-HUGGINGFACE_TOKEN: Optional[str] = dotenv.get_key(ENV_PATH, "HUGGINGFACE_TOKEN")
-AZURE_OPENAI_API_KEY: Optional[str] = dotenv.get_key(ENV_PATH, "AZURE_OPENAI_API_KEY")
-AZURE_OPENAI_ENDPOINT: Optional[str] = dotenv.get_key(ENV_PATH, "AZURE_OPENAI_ENDPOINT")
-COHERE_API_KEY: Optional[str] = dotenv.get_key(ENV_PATH, "COHERE_API_KEY")
+HUGGINGFACE_TOKEN: Optional[Any] = st.secrets.get("HUGGINGFACE_TOKEN")
+AZURE_OPENAI_API_KEY: Optional[Any] = st.secrets.get("AZURE_OPENAI_API_KEY")
+AZURE_OPENAI_ENDPOINT: Optional[Any] = st.secrets.get("AZURE_OPENAI_ENDPOINT")
+COHERE_API_KEY: Optional[Any] = st.secrets.get("COHERE_API_KEY")
 
 oss = OpenAI(base_url="https://router.huggingface.co/v1", api_key=HUGGINGFACE_TOKEN)
 o4_mini = AzureOpenAI(api_version="2025-04-01-preview", azure_endpoint=AZURE_OPENAI_ENDPOINT, api_key=AZURE_OPENAI_API_KEY, azure_deployment="o4-mini") # type: ignore[call-arg]

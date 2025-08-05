@@ -3,10 +3,10 @@ from typing import Optional, Any
 from httpx import RequestError, Response
 import dotenv
 from pathlib import Path
+import streamlit as st
 
-ENV_PATH = str(Path(__file__).resolve().parent / ".env")
-AZURE_EXTRAS_URI: Optional[str] = dotenv.get_key(ENV_PATH, "AZURE_EXTRAS_URI")
-AZURE_OPENAI_API_KEY: Optional[str] = dotenv.get_key(ENV_PATH, "AZURE_OPENAI_API_KEY")
+AZURE_EXTRAS_URI: Optional[Any] = st.secrets.get("AZURE_EXTRAS_URI")
+AZURE_OPENAI_API_KEY: Optional[Any] = st.secrets.get("AZURE_OPENAI_API_KEY")
 
 EXTRA_AZURE_MODELS: dict[str, str] = {
     "jais-30b": "jais-30b-chat",

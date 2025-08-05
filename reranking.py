@@ -1,7 +1,11 @@
 import cohere
+import streamlit as st
+from typing import Optional, Any
+
+COHERE_API_KEY: Optional[Any] = st.secrets.get("COHERE_API_KEY")
 
 def rerank(query: str, documents: list[str], top_n: int = 5) -> cohere.V2RerankResponse:
-    return cohere.ClientV2().rerank(
+    return cohere.ClientV2(api_key=COHERE_API_KEY).rerank(
         model="rerank-v3.5",
         query=query,
         documents=documents,
