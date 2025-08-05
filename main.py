@@ -76,7 +76,7 @@ def prompt_cohere(prompt: str, model: str):
         messages=[{ "role": "user", "content": prompt }] # type: ignore[call-arg]
         )
     
-    return response.message.content
+    return response.model_dump()['message']['content'][0]['text'] 
 
 def main() -> None:
     print("Hello from project-runway!")
@@ -92,8 +92,8 @@ def main() -> None:
     # print("gpt-4.1:\n", prompt_azure_openai(prompt, "gpt-4.1"), "\n",60*"-")
     # print("o1:\n", prompt_azure_openai(prompt, "o1"), "\n",60*"-")
     # print("gpt-4o:\n", prompt_azure_openai(prompt, "gpt-4o"), "\n",60*"-")
-    print("command-r7b:\n", prompt_cohere(prompt, "command-r7b"), "\n",60*"-")
-    print("command-r+:\n", prompt_cohere(prompt, "command-r+"), "\n",60*"-")
+    # print("command-r7b:\n", prompt_cohere(prompt, "command-r7b"), "\n",60*"-")
+    # print("command-r+:\n", prompt_cohere(prompt, "command-r+"), "\n",60*"-")
     print("command-a:\n", prompt_cohere(prompt, "command-a"), "\n",60*"-")
 
 
