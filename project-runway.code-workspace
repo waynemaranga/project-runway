@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"python.analysis.diagnosticMode": "workspace",
+		"python.analysis.typeCheckingMode": "standard"
+		// "python.analysis.usePullDiagnostics": false
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-toolsai.jupyter",
+			"ms-python.vscode-pylance",
+			"github.copilot"
+		]
+	}
+}
